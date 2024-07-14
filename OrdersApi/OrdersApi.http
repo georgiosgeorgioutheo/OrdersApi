@@ -1,0 +1,109 @@
+@OrdersApi_HostAddress = http://localhost:5229
+
+
+
+GET {{OrdersApi_HostAddress}}/customers/
+Accept: application/json
+
+###
+
+DELETE {{OrdersApi_HostAddress}}/customers/1
+Accept: application/json
+
+###
+
+Post {{OrdersApi_HostAddress}}/customers/?FirstName="Georgios"&lastName= "Georgiou"&Address= "Grigoropoulou 41"&PostalCode="35131"
+Accept: application/json
+
+###
+POST {{OrdersApi_HostAddress}}/api/customers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Georgios",
+  "lastName": "Georgiou",
+  "address": "Grigoropoulou 41",
+  "postalCode": "35131"
+}
+
+### 
+POST {{OrdersApi_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Sample Product",
+  "price": 10.0
+}
+
+### 
+POST {{OrdersApi_HostAddress}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Another Sample Product",
+  "price": 20.0
+}
+
+### 
+POST {{OrdersApi_HostAddress}}/api/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customerId": 1,
+  "orderDate": "2024-07-14T07:20:50.935428Z",
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "price": 10.0
+    },
+    {
+      "productId": 2,
+      "quantity": 1,
+      "price": 20.0
+    }
+  ]
+}
+
+### 
+GET {{OrdersApi_HostAddress}}/api/orders
+Accept: application/json
+
+### 
+GET {{OrdersApi_HostAddress}}/api/orders/date
+Accept: application/json
+
+### 
+GET {{OrdersApi_HostAddress}}/api/orders/1
+Accept: application/json
+
+### 
+PUT {{OrdersApi_HostAddress}}/api/orders/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "orderId": 1,
+  "customerId": 1,
+  "orderDate": "2024-07-15T07:20:50.935428Z",
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 3,
+      "price": 10.0
+    },
+    {
+      "productId": 2,
+      "quantity": 2,
+      "price": 20.0
+    }
+  ]
+}
+
+### 
+DELETE {{OrdersApi_HostAddress}}/api/orders/1
+Accept: application/json
